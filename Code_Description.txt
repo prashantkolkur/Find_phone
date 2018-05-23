@@ -1,0 +1,28 @@
+train_phone_finder.py
+
+1.Please run the script as shown below
+>python2 train_phone_finder.py find_phone
+
+2. KMeans is used on the training images
+
+3. Each image (326x490) is split into a small patch of 15x15 images. Each patch is converted into histogram of 256 features (grayscale).Now KMeans(k=3) is applied on the histogram of each patch.
+
+4. Using x and y coordiantes from labels.txt, small image patches are labeled as 1 if  the (x,y) falls in that patch else the patch is labelled as 0
+
+5. Training accuracy prediction: 
+	all of 15x15 histogram patches of a single image are predicted using already built model. The patches, which the model predicts as 1 have the phone location on the image. 
+	Using the patch number which are predicted as 1, x and  y coordinates are estimated
+
+6. Please note, training accuracy prediction takes some time since each image needs to split and processed. 
+
+7. Trained model is saved in a pickle file so that the model can be used in find_phone.py
+
+
+find_phone.py
+
+1. Please run the script as shown below
+> python2 find_phone.py find_phone/13.jpg
+
+2. The image given in the command line argument is split into 15x15 patches and Each patch is converted into histogram of 256 features.
+
+3. All the histogram patches are predicted using already built model in train_phone_finder.py. Using the patch number which are predicted as 1, x and  y coordinates are estimated
