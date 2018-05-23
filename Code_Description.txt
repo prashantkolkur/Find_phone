@@ -26,3 +26,8 @@ find_phone.py
 2. The image given in the command line argument is split into 15x15 patches and Each patch is converted into histogram of 256 features.
 
 3. All the histogram patches are predicted using already built model in train_phone_finder.py. Using the patch number which are predicted as 1, x and  y coordinates are estimated
+
+
+Note:
+1. Got 75-80% training accuracy
+2. Got 45-55% test accuracy
